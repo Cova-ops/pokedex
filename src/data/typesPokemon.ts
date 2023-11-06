@@ -1,0 +1,21 @@
+export const dicTypes = {
+  normal: '#BCBCAC',
+  fighting: '#A75543',
+  flying: '#7DA6DE',
+  poison: '#A95CA0',
+  ground: '#DEC16B',
+  rock: '#CDBD72',
+  bug: '#A7B723',
+  ghost: '#7D7EC4',
+  steel: '#C4C2DB',
+  fire: '#EA7A3C',
+  water: '#539DDF',
+  grass: '#7AC754',
+  electric: '#F7C545',
+  psychic: '#F87C7A',
+  ice: '#96F1FF',
+  dragon: '#6A7BAF',
+  dark: '#8E695B',
+  fairy: '#EBA8C3',
+  unknown: '#FFFFFF'
+}
