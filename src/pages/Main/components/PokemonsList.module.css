@@ -1,5 +1,17 @@
+.pokemon__list {
+  height: calc(100% - 30px);
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  padding: 30px 0 0 0;
+  z-index: 2;
+  overflow-y: auto;
+  direction: rtl;
+}
+
 .card {
-  min-width: 20%;
+  min-width: 300px;
   height: 140px;
   display: flex;
   flex-direction: column;
@@ -28,12 +40,15 @@
   height: 85px;
   object-fit: cover;
   margin-top: -40px;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
 .id {
   font-size: 0.8rem;
   font-weight: 500;
   color: gray;
+  margin: 0;
   margin-bottom: 10px;
   font-weight: bold;
 }
@@ -43,6 +58,7 @@
   font-weight: 500;
   color: #000;
   text-transform: capitalize;
+  margin: 0;
   margin-bottom: 10px;
   font-weight: bold;
 }

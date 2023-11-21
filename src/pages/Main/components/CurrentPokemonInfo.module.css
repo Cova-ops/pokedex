@@ -1,0 +1,208 @@
+.current__pokemon__info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-width: 320px;
+  width: 320px;
+  background-color: white;
+  border-radius: 15px;
+  margin: 150px 0 20px 20px;
+  box-shadow: #EDEDED 0 10px 10px;
+}
+
+.no__pokemon {
+  color: #8F9396;
+  margin: auto;
+  width: 150px;
+  text-align: center;
+  font-size: 18px;
+}
+
+.img__no__pokemon {
+  object-fit: contain;
+  margin-top: -150px;
+  image-rendering: pixelated;
+}
+
+.container__img {
+  display: flex;
+  width: 300px;
+  min-height: 300px;
+  justify-content: center;
+  align-items: flex-end;
+  margin-top: -250px;
+}
+
+.img__pokemon {
+  max-width: 100%;
+  max-height: 100%;
+  transform: scale(2.5);
+  transform-origin: bottom center;
+  image-rendering: pixelated;
+}
+
+h4 {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: gray;
+  margin-top: 10px;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #000;
+  text-transform: capitalize;
+  margin: 0;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 1rem;
+  margin: 20px 0 5px 0;
+}
+
+.types {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0px;
+}
+
+.types>span {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  margin: 0 5px;
+  padding: 3px 7px;
+  border-radius: 7px;
+  background-color: red;
+}
+
+p {
+  margin: 0 10px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: gray;
+  text-align: center;
+}
+
+p::first-letter {
+  text-transform: uppercase;
+}
+
+.body__description {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: calc(100% - 10px);
+}
+
+.body__description>div {
+  color: #011030;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.span__answer {
+  color: #011030;
+  font-size: 0.9rem;
+  background-color: #F6F8FC;
+  width: calc(100% - 10px);
+  border-radius: 30px;
+  margin: 0 5px;
+  padding: 8px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.abilities {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: calc(100% - 10px);
+  margin: 0 5px;
+  text-transform: capitalize;
+}
+
+.stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.stat {
+  margin: 0px 5px;
+  border-radius: 30px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.stat>h3 {
+  border-radius: 50%;
+  height: 25px;
+  width: 25px;
+  margin: 0;
+  font-size: 0.65rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+}
+
+.stat>span {
+  margin: 6px 0;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.evolution {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0;
+}
+
+.evolution>img {
+  margin: 0;
+  width: 68px;
+  height: 68px;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.evolution>img:hover {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.evolution>span {
+  margin: 0;
+  color: #011030;
+  width: 50px;
+  font-size: 0.7rem;
+  font-weight: bold;
+  border-radius: 30px;
+  padding: 8px 0px;
+  background-color: #F6F8FC;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

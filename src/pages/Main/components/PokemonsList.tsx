@@ -1,5 +1,5 @@
 // types
-import { Pokemon } from '../type'
+import type { PokemonType } from '../../../types/pokeapi.types'
 
 // data
 import { dicTypes } from '../../../data/typesPokemon'
@@ -8,28 +8,28 @@ import { dicTypes } from '../../../data/typesPokemon'
 import styles from './PokemonsList.module.css'
 
 type Props = {
-  pokemonList: Pokemon[]
+  pokemonList: PokemonType[],
+  setCurrentPokemon: (pokemon: PokemonType) => void
 }
 
-const PokemonsList = ({ pokemonList }: Props) => {
+const PokemonsList = ({ pokemonList, setCurrentPokemon }: Props) => {
   return (
-    <>
+    <section className={styles.pokemon__list}>
       {
       pokemonList.map(pokemon => (
-        <div key={pokemon.name} className={styles.card}>
+        <div key={pokemon.name} className={styles.card} onClick={() => setCurrentPokemon(pokemon)}>
           <img src={pokemon.image} alt='' className={styles.image} />
-          <span className={styles.id}>N° {pokemon.id}</span>
-          <span className={styles.name}>{pokemon.name}</span>
+          <h4 className={styles.id}>N° {pokemon.id}</h4>
+          <h2 className={styles.name}>{pokemon.name}</h2>
           <div className={styles.types}>
             {pokemon.types.map((type) => (
               <span key={type} style={{ backgroundColor: dicTypes[type] ?? '#FFFFFF' }}>{type}</span>
             ))}
           </div>
-
         </div>
       ))
     }
-    </>
+    </section>
   )
 }
 

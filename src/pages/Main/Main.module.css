@@ -19,16 +19,13 @@
   align-items: center;
   margin: 40px 100px 0px 100px;
   padding: 20px 0;
+  z-index: 1;
 }
 
 .container>main {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
+  overflow-y: hidden;
+  z-index: 2;
   margin: 0 100px;
-  padding: 20px 0;
-  z-index: 1;
-  overflow-y: auto;
-  direction: rtl;
+  display: flex;
+
 }

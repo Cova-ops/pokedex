@@ -1,0 +1,44 @@
+.animate__exit {
+  opacity: 1;
+  z-index: 999;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.animate__exit__active {
+  z-index: 999;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(-100vh);
+  transition: transform 400ms ease-in-out;
+}
+
+.loading__pokeball {
+  height: 70px;
+  filter: brightness(80%);
+  animation: rotatePokeBall ease-in-out 3s infinite;
+}
+
+@keyframes rotatePokeBall {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
