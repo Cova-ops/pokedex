@@ -2,31 +2,33 @@
 import axios from '../utils/axios'
 
 // adapters
-import { pokemonAdapter } from '../adapters/pokeapi.adapter'
+import { fullInfoPokemonAdapter, basicPokemonInfoAdapter } from '../adapters/pokeapi.adapter'
 
 // types
-import type { PokemonType, DataAllPokemonsType } from '../types/pokeapi.types'
+import type { PokemonType, FullInfoPokemonType, BasicInfoPokemonType, DataAllPokemonsType } from '../types/pokeapi.types'
 
-const LIMIT_REQUEST = 30
+// const LIMIT_REQUEST = 30
 
-const fetchPokemonInfo = async (name: string): Promise<PokemonType> => {
-  const { data: dataPokemon } = await axios.get(`/pokemon/${name}`)
-  const { data: dataSpecies } = await axios.get(`/pokemon-species/${dataPokemon.id}`)
+export const fetchFullPokemonInfo = async (urlSpecies: string): Promise<FullInfoPokemonType> => {
+  const { data: dataSpecies } = await axios.get(urlSpecies)
   const { data: dataEvolutions } = await axios.get(dataSpecies.evolution_chain.url)
-  return pokemonAdapter(dataPokemon, dataEvolutions, dataSpecies)
+  return fullInfoPokemonAdapter(dataEvolutions, dataSpecies)
 }
 
-export const fetchPokemons = async (offset: number): Promise<{ pokemons: PokemonType[], nextCursor: number }> => {
-  const response = await axios.get(`/pokemon?limit=${LIMIT_REQUEST}&offset=${offset}`)
+const fetchBasicPokemonInfo = async (name: string): Promise<BasicInfoPokemonType> => {
+  const { data: dataPokemon } = await axios.get(`/pokemon/${name}`)
+
+  return basicPokemonInfoAdapter(dataPokemon)
+}
+
+export const fetchPokemons = async (): Promise<PokemonType[]> => {
+  const response = await axios.get('/pokemon?limit=1000&offset=0')
   const { data: { results } }: { data: DataAllPokemonsType } = response
 
   const promisePokemons: Promise<PokemonType>[] = []
 
-  for (const pokemon of results) promisePokemons.push(fetchPokemonInfo(pokemon.name))
+  for (const pokemon of results) promisePokemons.push(fetchBasicPokemonInfo(pokemon.name))
   const pokemons: PokemonType[] = await Promise.all(promisePokemons)
 
-  return {
-    pokemons,
-    nextCursor: offset + LIMIT_REQUEST
-  }
+  return pokemons
 }

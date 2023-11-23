@@ -2,7 +2,7 @@ type typePokemonType = 'normal' | 'fighting' | 'flying' | 'poison' | 'ground' | 
 
 type typeStatPokemonType = 'hp' | 'attack' | 'defense' | 'special-attack' | 'special-defense' | 'speed' | 'total'
 
-export type PokemonType = {
+export type BasicInfoPokemonType = {
   image: string,
   animated: string,
   height: number,
@@ -10,11 +10,17 @@ export type PokemonType = {
   id: number,
   types: typePokemonType[],
   stats: { baseStat: number, name: typeStatPokemonType }[],
-  evolutions: { name: string, minLevel: number, id: number, image: string }[],
+  abilities: string[],
   name: string
-  description: string
-  abilities: string[]
+  speciesUrl: string
 }
+
+export type FullInfoPokemonType = {
+  evolutions?: { name: string, minLevel: number, id: number, image: string }[],
+  description?: string
+}
+
+export type PokemonType = BasicInfoPokemonType & FullInfoPokemonType
 
 export type DataAllPokemonsType = {
   count: number

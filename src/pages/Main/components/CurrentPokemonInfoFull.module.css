@@ -1,0 +1,253 @@
+.container {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  display: flex;
+  transform: translateY(100%);
+  opacity: 0;
+  overflow-y: auto;
+}
+
+.animate__enter {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 400ms ease-in-out, transform 400ms ease-in-out;
+}
+
+.animate__exit {
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 400ms ease-in-out, transform 400ms ease-in-out;
+}
+
+.close__button {
+  color: #000000;
+  background-color: #ffffff;
+  box-shadow: none;
+  height: 35px;
+  width: 35px;
+  padding: 5px;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+
+.close__button:hover {
+  opacity: 0.7;
+  transition: opacity 300ms ease-in-out;
+}
+
+.container__info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+  margin-top: 150px;
+  margin-bottom: 0;
+  background-color: white;
+  border-radius: 15px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.id,
+.description,
+.name,
+.types,
+.body__description,
+.abilities,
+.stats,
+.evolution,
+.container__img {
+  min-width: 350px;
+  max-width: 650px;
+  text-align: center;
+}
+
+.container__img {
+  display: flex;
+  width: 330px;
+  min-height: 330px;
+  justify-content: center;
+  align-items: flex-end;
+  margin-top: -250px;
+  cursor: pointer;
+}
+
+.img__pokemon {
+  max-width: 100%;
+  max-height: 100%;
+  transform: scale(2.5);
+  transform-origin: bottom center;
+  image-rendering: pixelated;
+}
+
+.id {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: gray;
+  margin-top: 10px;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.name {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #000;
+  text-transform: capitalize;
+  margin: 0;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.h2__title {
+  font-size: 1rem;
+  margin: 20px 0 5px 0;
+}
+
+.types {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0px;
+}
+
+.types>span {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  margin: 0 5px;
+  padding: 3px 7px;
+  border-radius: 7px;
+  background-color: red;
+}
+
+.description {
+  margin: 0 10px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: gray;
+  text-align: center;
+}
+
+.description::first-letter {
+  text-transform: uppercase;
+}
+
+.body__description {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: calc(100% - 10px);
+}
+
+.body__description>div {
+  color: #011030;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.span__answer {
+  color: #011030;
+  font-size: 0.9rem;
+  background-color: #F6F8FC;
+  width: calc(100% - 10px);
+  border-radius: 30px;
+  margin: 0 5px;
+  padding: 8px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.abilities {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: calc(100% - 10px);
+  margin: 0 5px;
+  text-transform: capitalize;
+}
+
+.stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.stat {
+  margin: 0px 5px;
+  border-radius: 30px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.stat>h3 {
+  border-radius: 50%;
+  height: 25px;
+  width: 25px;
+  margin: 0;
+  font-size: 0.65rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+}
+
+.stat>span {
+  margin: 6px 0;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.evolution {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+.evolution>img {
+  margin: 0;
+  width: 68px;
+  height: 68px;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.evolution>img:hover {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.evolution>span {
+  margin: 0 10px;
+  color: #011030;
+  width: 50px;
+  font-size: 0.7rem;
+  font-weight: bold;
+  border-radius: 30px;
+  padding: 8px 0px;
+  background-color: #F6F8FC;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

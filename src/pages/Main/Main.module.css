@@ -14,6 +14,7 @@
 }
 
 .container>header {
+  /* width: calc(100% - 550px); */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -23,9 +24,21 @@
 }
 
 .container>main {
-  overflow-y: hidden;
-  z-index: 2;
+  /* overflow-x: auto; */
+  /* overflow-y: visible; */
+  max-height: calc(100% - 165px);
+  z-index: 1;
   margin: 0 100px;
   display: flex;
+  height: 100%;
+}
 
+@media screen and (max-width: 1200px) {
+  .container>main {
+    margin: 0 20px;
+  }
+
+  .container>header {
+    margin: 40px 20px 0px 20px;
+  }
 }

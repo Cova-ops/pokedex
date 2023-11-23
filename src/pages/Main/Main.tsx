@@ -1,10 +1,11 @@
 import { useState } from 'react'
-import { useInfiniteQuery } from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query'
 
 // components
 import { Page, Browser, LoadingPage } from '../../components'
 import PokemonsList from './components/PokemonsList'
-import CurrentPokemonInfo from './components/CurrentPokemonInfo'
+import CurrentPokemonInfoSide from './components/CurrentPokemonInfoSide'
+import CurrentPokemonInfoFull from './components/CurrentPokemonInfoFull'
 
 // api
 import { fetchPokemons } from '../../api'
@@ -13,7 +14,8 @@ import { fetchPokemons } from '../../api'
 import PokeBall from '../../assets/pokeball-icon.png'
 
 // hooks
-import useDelayUnmount from '../../hooks/DelayUnmount'
+import useDelayUnmount from '../../hooks/useDelayUnmount'
+import useResponsive from '../../hooks/useResponsive'
 
 // types
 import type { PokemonType } from '../../types/pokeapi.types'
@@ -24,18 +26,22 @@ import styles from './Main.module.css'
 // ----------------------------------------------
 
 const Main = () => {
-  const { isLoading, isError, data, refetch, fetchNextPage, hasNextPage } = useInfiniteQuery<{nextCursor: number, pokemons: PokemonType[] }>(
+  const { isLoading, isError, data } = useQuery<PokemonType[]>(
     {
       queryKey: ['pokemons'],
-      queryFn: ({ pageParam = 0 }) => fetchPokemons(pageParam as number),
-      initialPageParam: 0,
-      getNextPageParam: (lastPage: {nextCursor: number, pokemons: PokemonType[] }): number => lastPage.nextCursor
+      queryFn: () => fetchPokemons()
     }
   )
-  const shouldRenderLoadingPage = useDelayUnmount(isLoading, 400)
+  const [filterName, setFilterName] = useState<string | null>(null)
   const [currentPokemon, setCurrentPokemon] = useState<PokemonType | null>(null)
+  const shouldRenderLoadingPage = useDelayUnmount(isLoading, 400)
+  const { getSize } = useResponsive()
+  const downLg = getSize('down', { start: 'lg' })
 
-  const pokemons: PokemonType[] = data?.pages.flatMap(page => page.pokemons) ?? []
+  const pokemons: PokemonType[] =
+    filterName
+      ? data?.filter(pokemon => pokemon.name.toLocaleLowerCase().includes(filterName.toLocaleLowerCase())) || []
+      : data || []
 
   return (
     <Page title='PokeDex' className={styles.container}>
@@ -43,12 +49,16 @@ const Main = () => {
 
       <img className={styles.pokeball__background} src={PokeBall} alt='' />
       <header>
-        <Browser />
+        <Browser setValue={setFilterName} />
       </header>
 
       <main>
-        {!isLoading && pokemons.length > 0 && <PokemonsList pokemonList={pokemons} setCurrentPokemon={setCurrentPokemon} />}
-        <CurrentPokemonInfo currentPokemon={currentPokemon} />
+        {!isLoading && <PokemonsList pokemonList={pokemons} setCurrentPokemon={setCurrentPokemon} />}
+        {
+          !downLg
+            ? <CurrentPokemonInfoSide currentPokemon={currentPokemon} />
+            : <CurrentPokemonInfoFull currentPokemon={currentPokemon} setCurrentPokemon={setCurrentPokemon} />
+        }
       </main>
     </Page>
   )
